@@ -2,6 +2,7 @@ var myApp = angular.module('myApp',[]);
 
 myApp.controller('WelcomeController',["$scope", "$http", function($scope,$http){
     $scope.heading = "Message: ";
+    $scope.persons = [];
 
     $scope.updateMessage = function(){
         $scope.message = "Hello, " + $scope.name + "!";
@@ -17,7 +18,8 @@ myApp.controller('WelcomeController',["$scope", "$http", function($scope,$http){
             {
                 throw new Error("I haz sad.");
             }
-
+            $scope.persons.push(response.data);
+            console.log($scope.persons);
             console.log(response);
             return response.data;
         });
